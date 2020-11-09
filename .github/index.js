@@ -34,7 +34,7 @@ const addLi = (company,ticker) => {
   let liTextItem = document.createTextNode(`${company},${ticker}`);
   a.appendChild(liTextItem);
   a.title = "my title text";
-  a.href = `/company.html?symbol=${ticker}`;
+  a.href = `./company.html?symbol=${ticker}`;
   newListItem.appendChild(a);
   getSearchUL.appendChild(newListItem);
   newListItem.classList.add("list-group-item"); //adding the li bootstrap class style

@@ -18,6 +18,7 @@ const findCompanyData = () => {
       tempObj.symbol = data[i].symbol;
       sortedData.push(tempObj);
       addLi(tempObj.name,tempObj.symbol);
+      console.log(data);
     }
     setTimeout(function() {
       getCornerDiv.classList.remove("spinner-grow","spinner-border-sm");
@@ -39,6 +40,24 @@ const addLi = (company,ticker) => {
   getSearchUL.appendChild(newListItem);
   newListItem.classList.add("list-group-item"); //adding the li bootstrap class style
 }
+
+
+
+async function CompanyData() {
+  const urlProfile = `https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/company/profile/${symbol}`;
+  const response = await fetch(urlProfile);
+  const data = await response.json();
+  return data;
+}
+
+fetchCompanyData().then(data => {
+  addLiCompany(data.symbol,data.profile.image,website,data.profile.price,data.profile.changesPercentage);
+});
+
+
+
+
+
 
 
 

@@ -2,7 +2,56 @@ const getSearchButtonClick = document.getElementById("search-button");
 const getInputField = document.getElementById("search-input");
 const getCornerDiv = document.getElementById("corner-div");
 
+
+
 let sortedData = [];
+ 
+
+  const urlList = `https://financialmodelingprep.com/api/v3/stock/list?apikey=1f5809045c39cf691a50c9feff3b3a74`;
+  fetch(urlList)
+  .then(response => response.json())
+  .then(data => { 
+    const tickerDiv = document.getElementById("ticker-spot");
+
+
+    for (let i = 0; i < 100; i++) {
+      
+      sortedData.push(`${data[i].symbol}->`);
+      sortedData.push(`${data[i].price.toFixed(2)}`);
+      sortedData.push(`,  `);
+      
+    // Math.random() * 100
+      }
+      const tickerList = sortedData.join("");
+      console.log(tickerList);
+
+      const getTickerArray = document.createTextNode(`${tickerList}`);
+      tickerDiv.appendChild(getTickerArray);
+      tickerDiv.classList.add("ticker-animation");
+    }
+      )
+    
+
+
+      // const getSearchUL = document.getElementById(`${targetList}`);
+      // let liTextItem = document.createTextNode(`${linkUrl}`);
+      // var a = document.createElement('a'); //create new anchor element
+      // a.appendChild(liTextItem);
+      // a.title = "my title text";
+      // a.href = `${linkUrl}`;
+      // let newListItem = document.createElement('LI');
+      // newListItem.appendChild(a);
+      // getSearchUL.appendChild(newListItem);
+      // getSearchUL.classList.add(`${putClasses2}`);
+      // newListItem.classList.add(`${putClasses1}`);
+
+
+
+
+
+
+
+
 
 const findCompanyData = () => {
   let newArray = [];
@@ -22,13 +71,7 @@ const findCompanyData = () => {
         .then(response => response.json())
         .then(data => { 
           
-
           addLi(data.profile.companyName,symbol,data.profile.image,data.profile.price,data.profile.changesPercentage);
-
-
-
-
-
         });
 
 
@@ -104,4 +147,3 @@ const addLi = (companyName, symbol, image, price, priceChanges) => {
 
 
 getSearchButtonClick.addEventListener("click", findCompanyData);
-console.log(sortedData);

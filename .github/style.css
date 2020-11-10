@@ -1,0 +1,33 @@
+.ticker-animation {
+      background-color: white;
+      animation: 
+        pulse 20s ease infinite alternate, 
+        nudge 500s linear infinite alternate;
+      border-radius: 100%;
+    }
+    
+    @keyframes pulse {
+      0%, 100% {
+        background-color:lightcyan ;
+      }
+      50% {
+        background-color: orange;
+      }
+    }
+    
+    @keyframes nudge {
+      0%, 100% {
+        transform: translate(-5000, 0);
+      }
+      
+      50% {
+        transform: translate(-10000px, 0);
+      }
+      
+      100% {
+        transform: translate(-10000px, 0);
+      }
+
+
+    }
+    

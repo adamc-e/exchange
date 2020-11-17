@@ -24,9 +24,17 @@ class Marquee {
           this.newSpan.appendChild(this.getTickerData);
           this.divHolder.appendChild(this.newSpan);
         }
-          
-          
-          // this.documentElement.classList.add("ticker-div");
+        //     async newHighlighting(search,company,ticker) { 
+        //     const myRegEx = new RegExp(search, "ig");
+        //     let line = `${company} (${ticker})`;
+        //     let newLine = line.replace(myRegEx, (string) => {
+        //     let finalProduct = "<mark>" + string + "</mark>";
+        //     return finalProduct;
+        //   });} WAS NOT ABLE TO GET MT
+    
+    
+    
+    
           }
           )
       

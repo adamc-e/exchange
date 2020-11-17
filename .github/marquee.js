@@ -1,52 +1,36 @@
 class Marquee {  
-    constructor (divElementID) {
-    this.sortedData = [];
-    const urlList = `https://financialmodelingprep.com/api/v3/stock/list?apikey=1f5809045c39cf691a50c9feff3b3a74`;
-    fetch(urlList)
-    .then(response => response.json())
-    .then(data => { 
-        this.tickerDiv = document.getElementById(`${divElementID}`);
-
-
-        for (let i = 0; i < 100; i++) {
+    constructor (documentElement) {
+      this.sortedData = [];
+      this.documentElement = documentElement;
       
-        this.sortedData.push(`${data[i].symbol}->`);
-        this.sortedData.push(`${data[i].price.toFixed(2)}`);
-        this.sortedData.push(`,  `);
-          }
-        this.tickerList = this.sortedData.join("");
-        this.getTickerArray = document.createTextNode(`${this.tickerList}`);
-        this.tickerDiv.appendChild(this.getTickerArray);
-        this.tickerDiv.classList.add("ticker-animation");
-        }
-        )
     }
-}
+    load () { 
+      const urlList = `https://financialmodelingprep.com/api/v3/stock/list?apikey=1f5809045c39cf691a50c9feff3b3a74`;
+      fetch(urlList)
+      .then(response => response.json())
+      .then(data => {   
+          this.divHolder = document.createElement("div");
+          this.divHolder.classList.add("marquee");
+          this.documentElement.appendChild(this.divHolder);
+          this.documentElement.classList.add("marquee");
 
-
-// function () {  
-//     let sortedData = [];
-//     const urlList = `https://financialmodelingprep.com/api/v3/stock/list?apikey=1f5809045c39cf691a50c9feff3b3a74`;
-//     fetch(urlList)
-//     .then(response => response.json())
-//     .then(data => { 
-//         const tickerDiv = document.getElementById("ticker-spot");
-
-
-//         for (let i = 0; i < 100; i++) {
+          for (let i = 0; i < 1000; i++) {
+          this.newSpan = document.createElement("span");
+          this.newSpan.classList.add("marquee");
+          this.getTickerData = document.createTextNode(`  ${data[i].symbol}: ${data[i].price.toFixed(2)}    `);
+          
+          
+          
+          this.newSpan.appendChild(this.getTickerData);
+          this.divHolder.appendChild(this.newSpan);
+        }
+          
+          
+          // this.documentElement.classList.add("ticker-div");
+          }
+          )
       
-//         sortedData.push(`${data[i].symbol}->`);
-//         sortedData.push(`${data[i].price.toFixed(2)}`);
-//         sortedData.push(`,  `);
-//           }
-//           const tickerList = sortedData.join("");
-//         console.log(tickerList);
-
-//         const getTickerArray = document.createTextNode(`${tickerList}`);
-//         tickerDiv.appendChild(getTickerArray);
-//         tickerDiv.classList.add("ticker-animation");
-//         }
-//         )
-//     }
+    }
+  }
 
 

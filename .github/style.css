@@ -1,9 +1,10 @@
-.ticker-animation {
+/* .ticker-animation {
       background-color: white;
       animation: 
-        pulse 20s ease infinite alternate, 
-        nudge 500s linear infinite alternate;
-      border-radius: 100%;
+        pulse 40s ease infinite alternate, 
+        nudge 1000s linear infinite alternate;
+        marquee 5s linear infinite;
+        border-radius: 0%;
     }
     
     @keyframes pulse {
@@ -27,7 +28,39 @@
       100% {
         transform: translate(-10000px, 0);
       }
+    } */
 
+    .ticker-div {
+    white-space: nowrap;
 
     }
+
+    .marquee {
+      height: 25px;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      background-color: black;
+      color:white;
+    }
     
+    .marquee div {
+      display: block;
+      width: 200%;
+      height: 30px;
+      background-color: black;
+      position: absolute;
+      overflow: hidden;
+      animation: marquee 50s linear infinite;
+    }
+    
+    .marquee2 span {
+      float: left;
+      width: 50%;
+      background-color: black;
+    }
+    
+    @keyframes marquee {
+      0% { left: 0; }
+      100% { left: -100%; }
+    }

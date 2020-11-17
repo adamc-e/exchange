@@ -10,7 +10,46 @@
 
   </head>
 <body>
-  <div id="ticker-spot" style="white-space: nowrap"></div>
+<div id="marquee"></div>
+<div class="container mt-5 shadow-lg p-5 bg-white rounded">
+  <h2 class="mb-4 text-center display-4">Search Nasdaq Stocks</h2>
+  <div id="form"></div>
+  <div id="results"></div>
+</div>
+<script src="./marquee.js"></script>
+<script src="./searchresult.js"></script>
+<script src="./searchform.js"></script>
+<script>
+(async function () { 
+
+const marquee = new Marquee(document.getElementById("marquee"));
+marquee.load();
+
+
+const form = new SearchForm(document.getElementById('form'));
+const results = new SearchResult(document.getElementById('results'));
+form.onSearch((companies) => { 
+results.renderResults(companies);
+});
+})()
+
+
+</script>
+
+
+  
+<!-- <script type="module" src="./marquee.js"></script>
+<script type="module">
+
+import Marquee from './marquee';
+    // ...
+</script> -->
+
+
+</body>
+</html>
+
+<!-- <div id="marquee" style="white-space: nowrap"></div>
 <div class="container-fluid">
     <div class="row">
         <div class="col-12"><p></p></div>
@@ -40,7 +79,7 @@
                         <a class="dropdown-item" href="#">Separated link</a>
                       </div>
                     </div>
-                    <input type="text" placeholder="Search by symbol or company name..." class="form-control" aria-label="Text input with segmented dropdown button" id="search-input">
+                    <input type="text" placeholder="Search by symbol or company name..." class="form-control" aria-label="Text input with segmented dropdown button" id="form">
                   </div>
             </div> 
             <div class="col-2"> </div>
@@ -48,29 +87,12 @@
         <div class="row">
           <div class="col-2"></div>
           <div class="col-8">
-            <ul id="search-list">
+            <ul id="resultsshown">
             </ul>
 
 
           </div>
           <div class="col-2"></div>
         </div>
+      </div> -->
 
-
-
-</div>
-
-
-<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
-<script src="./marquee.js"></script>
-<script src="index.js"></script>
-<!-- <script type="module" src="./marquee.js"></script>
-<script type="module">
-
-import Marquee from './marquee';
-    // ...
-</script> -->
-
-
-</body>
-</html>
